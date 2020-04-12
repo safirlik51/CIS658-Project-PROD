@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1>Welcome to Pack Tracker!</h1>
+    <p class="lead text-muted">
+      Enter a new package to track or view status of current packages below!
+    </p>
+    <%= render 'form', package: @package %>
+  </div>
+</section>
+  <div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <% @packages.each do |package| %>
+        <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+          <svg class="bg-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="placeholder: Thumbnail">
+            <title>Package</title>
+            <rect width="100%" height="100%" fill="#55595c"></rect>
+            <text x="40%" y="50%" fill="#eceeef" dy=".5em">Thumbnail</text>
+          </svg>
+          <div class="carb-body">
+            <p class="card-text">
+              <%= package.tracking %><br>
+              <%= package.carrier %>
+            </p>
+            <div class="d-flex justify-content-between alight-items-center">
+              <div class="btn-group">
+                <%= button_to 'Track', scrape_packages_path, class: "btn btn-sm btn-outline-dark" %>
+                <%= link_to 'Delete', package, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger btn-outline-dark"%>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+
