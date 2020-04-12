@@ -65,7 +65,7 @@ class PackagesController < ApplicationController
   end
 
   def scrape
-    url = ''
+    url = 'https://www.ups.com/track?loc=en_US&tracknum=1Z967FF40295551399&requester=WT/trackdetails'
     response = PackagesSpider.process(url)
     if response[:status] == :completed && response[:error].nil?
       flas.now[:notice] = "Successfully scraped url"
