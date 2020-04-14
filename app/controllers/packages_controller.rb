@@ -65,15 +65,12 @@ class PackagesController < ApplicationController
   end
 
   def scrape
+    require 'watir'
     url = 'https://www.ups.com/track?loc=en_US&tracknum=1Z967FF40295551399&requester=WT/trackdetails'
-    response = PackagesSpider.process(url)
-    if response[:status] == :completed && response[:error].nil?
-      flas.now[:notice] = "Successfully scraped url"
-    else
-      flash.now[:alert] = response[:error]
-    end
-    rescue StandardError => e
-      flash.now[:alert] = "Error: #{e}"
+    b = Watir::Browser.new :chrome, headless: true
+    b.goto(url)
+    @text = b.p(:class, 'ups-txt_size_double_lg').when_present.text
+    redirect_to packages_path
   end
 
   private
@@ -84,6 +81,6 @@ class PackagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def package_params
-      params.require(:package).permit(:tracking, :carrier)
+      params.require(:package).permit(:tracking, :carrier, :status)
     end
 end

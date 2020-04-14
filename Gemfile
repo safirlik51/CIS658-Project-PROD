@@ -25,7 +25,9 @@ gem 'omniauth-auth0', '~> 2.2'
 gem 'httparty'
 gem 'nokogiri'
 gem 'byebug'
-
+gem 'kimurai'
+gem 'rest-client'
+gem 'watir'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
