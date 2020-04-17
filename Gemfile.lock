@@ -172,6 +172,7 @@ GEM
     omniauth-oauth2 (1.6.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
+    pg (1.2.2)
     pmap (1.1.1)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
@@ -184,6 +185,8 @@ GEM
     puma (4.3.3)
       nio4r (~> 2.0)
     rack (2.2.2)
+    rack-cors (1.1.1)
+      rack (>= 2.0.0)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
@@ -302,7 +305,9 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   nokogiri
   omniauth-auth0 (~> 2.2)
+  pg
   puma (~> 4.1)
+  rack-cors
   rails (~> 6.0.2, >= 6.0.2.2)
   rest-client
   sass-rails (>= 6)

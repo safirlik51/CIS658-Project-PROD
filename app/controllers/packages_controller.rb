@@ -64,9 +64,9 @@ class PackagesController < ApplicationController
     end
   end
 
-  def scrape(tracking_num)
+  def scrape()
     require 'watir'
-    url = "https://www.ups.com/track?loc=en_US&tracknum=#{tracking_num}&requester=WT/trackdetails"
+    url = "https://www.ups.com/track?loc=en_US&tracknum=#{params[:tracking_num]}&requester=WT/trackdetails"
     b = Watir::Browser.new :chrome, headless: true
     b.goto(url)
     text = b.p(:class, 'ups-txt_size_double_lg').when_present.text

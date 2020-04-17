@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :packages do
-    match '/scrape', to: 'packages#scrape', via: :post, on: :collection
+    post '/scrape', to: 'packages#scrape', on: :collection
   end
   root 'home#index'
 
