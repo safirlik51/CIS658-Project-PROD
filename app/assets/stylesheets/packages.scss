@@ -1,3 +1,24 @@
 // Place all the styles related to the Packages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+#package_carrier{
+    display: inline-block;
+}
+
+.card-text{
+    font-weight: bolder;
+    font-size: large;
+    text-align: center;
+}
+
+.btn-group{
+    padding-left: 33%;
+}
+
+#notice{
+    font-weight: bolder;
+    font-size: 90px;
+    text-align: center;
+    margin-top: 25%;
+    -webkit-text-stroke: 5px white;
+}

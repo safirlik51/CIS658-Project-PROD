@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <section class="jumbotron text-center">
   <div class="container">
     <h1>Welcome to Pack Tracker!</h1>
@@ -17,16 +16,18 @@
           <svg class="bg-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="placeholder: Thumbnail">
             <title>Package</title>
             <rect width="100%" height="100%" fill="#55595c"></rect>
-            <text x="40%" y="50%" fill="#eceeef" dy=".5em">Thumbnail</text>
+            <text x="25%" y="50%" fill="#eceeef" dy=".5em"><%= package.tracking %></text>
+            <image href="https://volumeintegration.com/wp-content/uploads/PackageIcon.png" width="100%" height="225"/>
           </svg>
           <div class="carb-body">
             <p class="card-text">
               <%= package.tracking %><br>
-              <%= package.carrier %>
+              <%= package.carrier %><br>
+              <%= package.status %>
             </p>
             <div class="d-flex justify-content-between alight-items-center">
               <div class="btn-group">
-                <%= button_to 'Track', scrape_packages_path, class: "btn btn-sm btn-outline-dark" %>
+                <%= button_to 'Track', scrape_packages_path(tracking_num: package.tracking), class: "btn btn-sm btn-outline-dark" %>
                 <%= link_to 'Delete', package, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger btn-outline-dark"%>
               </div>
             </div>

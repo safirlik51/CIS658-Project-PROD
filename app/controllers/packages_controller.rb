@@ -7,12 +7,12 @@ class PackagesController < ApplicationController
   def index
     @packages = Package.all
     @package = Package.new
-    
   end
 
   # GET /packages/1
   # GET /packages/1.json
   def show
+    json_response(@package = Package.find(params[:id]))
   end
 
   # GET /packages/new
@@ -64,13 +64,13 @@ class PackagesController < ApplicationController
     end
   end
 
-  def scrape
+  def scrape(tracking_num)
     require 'watir'
-    url = 'https://www.ups.com/track?loc=en_US&tracknum=1Z967FF40295551399&requester=WT/trackdetails'
+    url = "https://www.ups.com/track?loc=en_US&tracknum=#{tracking_num}&requester=WT/trackdetails"
     b = Watir::Browser.new :chrome, headless: true
     b.goto(url)
-    @text = b.p(:class, 'ups-txt_size_double_lg').when_present.text
-    redirect_to packages_path
+    text = b.p(:class, 'ups-txt_size_double_lg').when_present.text
+    flash.now[:notice] = text
   end
 
   private
