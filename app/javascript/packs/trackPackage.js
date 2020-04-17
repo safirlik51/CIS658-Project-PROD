@@ -11,12 +11,12 @@ const toSend = {
     },
     "TrackRequest": {
         "Request": {
-            "RequestOption": "1",
+            "RequestOption": "",
             "TransactionReference": {
                 "CustomerContext": "Your Test Case Summary Description"
             }
         },
-        "InquiryNumber": "1Z967FF40295551399"
+        "InquiryNumber": "1Z12345E0291980793"
     }
 };
 
