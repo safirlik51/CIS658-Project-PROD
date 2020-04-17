@@ -11,7 +11,7 @@ const toSend = {
     },
     "TrackRequest": {
         "Request": {
-            "RequestOption": "",
+            "RequestOption": "activity",
             "TransactionReference": {
                 "CustomerContext": "Your Test Case Summary Description"
             }
