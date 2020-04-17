@@ -1,9 +1,26 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
     allow do
-      origins '*'
+      origins 'http://localhost:3000'
   
       resource '*',
         headers: :any,
         methods: [:get, :post, :put, :patch, :delete, :options, :head]
     end
+
+    allow do
+      origins 'https://pure-retreat-87998.herokuapp.com/'
+  
+      resource '*',
+        headers: :any,
+        methods: [:get, :post, :put, :patch, :delete, :options, :head]
+    end
+
+    allow do
+      origins 'https://wwwcie.ups.com/rest/Track'
+  
+      resource '*',
+        headers: :any,
+        methods: [:get, :post, :put, :patch, :delete, :options, :head]
+    end
+      
 end
