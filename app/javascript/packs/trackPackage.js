@@ -28,7 +28,7 @@ xhr.open("POST", "https://wwwcie.ups.com/rest/Track", true);
 xhr.setRequestHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Origin, X-Requested-With, Content-Type, Accept");
 xhr.setRequestHeader("Access-Control-Allow-Methods", "POST");
 xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 xhr.send(jsonString);
 }
 
