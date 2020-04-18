@@ -27,8 +27,7 @@
             </p>
             <div class="d-flex justify-content-between alight-items-center">
               <div class="btn-group">
-              <button type="button" id="trackButton">Test!</button>
-                <%= button_to 'Track', scrape_packages_path(tracking_num: package.tracking), class: "btn btn-sm btn-outline-dark", method: :post, remote: true %>
+                <button type="button" class="btn btn-sm btn-outline-dark" id="trackButton">Test!</button>
                 <%= link_to 'Delete', package, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger btn-outline-dark"%>
               </div>
             </div>

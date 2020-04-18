@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  resources :packages do
-    post '/scrape', to: 'packages#scrape', on: :collection
-  end
+  resources :packages
   root 'home#index'
-
+  post '/rest/Track', to: 'packages#scrape'
   get 'dashboard' => 'packages#index'
   get '/logout' => 'auth0#logout'
   get 'auth/auth0', as: 'authentication'

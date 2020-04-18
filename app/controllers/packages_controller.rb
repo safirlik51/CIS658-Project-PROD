@@ -1,6 +1,7 @@
 class PackagesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_package, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /packages
   # GET /packages.json
@@ -64,13 +65,32 @@ class PackagesController < ApplicationController
     end
   end
 
-  def scrape()
-    require 'watir'
-    url = "https://www.ups.com/track?loc=en_US&tracknum=#{params[:tracking_num]}&requester=WT/trackdetails"
-    b = Watir::Browser.new :chrome, headless: true
-    b.goto(url)
-    text = b.p(:class, 'ups-txt_size_double_lg').when_present.text
-    flash.now[:notice] = text
+  def scrape
+    post '/rest/Track' do
+      puts "Received"
+      @data = request.body
+      @response = do_request(@data)
+      set_access_control
+      format.json {render json: @response}
+    end
+
+    ALLOWED_REFERRERS = ['http://mydomain.com','http://localhost:3000']
+
+    def do_request(data)
+      url = "https://onlinetools.ups.com/rest/Track"
+      conn = Faraday.new(url)
+      conn.post(url,data,"Content-Type" => "application/json")
+    end
+
+    def set_access_control
+      request_referrer = request.env['HTTP_REFERER'] || request.env['REQUEST_URI']
+
+      referrer = ALLOWED_REFERRERS.detect do |allowed_referrer|
+        request_referrer =~ /#{allowed_referrer}/i
+      end
+
+      headers "Access-Control-Allow-Origin" => referrer
+    end
   end
 
   private
