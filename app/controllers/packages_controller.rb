@@ -67,18 +67,11 @@ class PackagesController < ApplicationController
 
   def post
       data = request.body.read
-      response = do_request(data)
-      set_access_control
-      respond_to do |format|
-        format.json {render json: response}
-      end
-  end
-
-  def do_request(track)
-    url = "https://onlinetools.ups.com/rest/Track"
-    conn = Faraday.new(url)
-    conn.post(url,track,"Content-Type" => "application/json")
-    puts "Success!"
+      url = "https://onlinetools.ups.com/rest/Track"
+      conn = Faraday.new(url)
+      response = conn.post(url,data,"Content-Type" => "application/json")
+      puts "Success!"
+      render json: response
   end
 
   private

@@ -1,6 +1,7 @@
 // Place all the styles related to the Packages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
 #package_carrier{
     display: inline-block;
 }
@@ -12,7 +13,8 @@
 }
 
 .btn-group{
-    padding-left: 33%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #notice{
@@ -21,4 +23,14 @@
     text-align: center;
     margin-top: 25%;
     -webkit-text-stroke: 5px white;
+}
+
+#icon{
+    margin-left: auto;
+    margin-right: auto;
+    height: 150px;
+}
+
+#package-status{
+    text-align: center;
 }
