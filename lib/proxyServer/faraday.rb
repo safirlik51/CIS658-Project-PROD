@@ -1,5 +1,11 @@
 require 'faraday'
 
+post '/rest/Track' do
+  response = do_request(data)
+  set_access_control
+  response.body
+end
+
 ALLOWED_REFERRERS = ['http://mydomain.com','http://localhost:3000']
 
 def do_request(data)

@@ -29,6 +29,7 @@ gem 'kimurai'
 gem 'rest-client'
 gem 'watir'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'faraday'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

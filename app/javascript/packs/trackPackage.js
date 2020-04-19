@@ -1,3 +1,5 @@
+let getPackages = document.getElementsByClassName('card-text');
+
 let sendRequest = function() {
     const toSend = {
         "UPSSecurity": {
@@ -25,7 +27,7 @@ let sendRequest = function() {
     const xhr = new XMLHttpRequest();
 
     xhr.open("POST", "http://localhost:3000/rest/Track", true);
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.setRequestHeader("Content-Type", "application/json;charset=utf-8");
     xhr.send(jsonString);
 
     xhr.onreadystatechange = () => {
@@ -40,6 +42,5 @@ let sendRequest = function() {
         }
     }
 }
-
 let test = document.getElementById('trackButton');
 test.addEventListener('click', sendRequest);
