@@ -8,7 +8,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     end
 
     allow do
-      origins 'https://pure-retreat-87998.herokuapp.com/'
+      origins 'https://packertracker.herokuapp.com/'
   
       resource '*',
         headers: :any,
