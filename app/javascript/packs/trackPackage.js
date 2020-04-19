@@ -70,23 +70,15 @@ let updateStatus = function(package_status){
     }
 }
 let track = document.getElementsByClassName('btn btn-sm btn-outline-dark');
-let getPackages = document.getElementsByClassName('card-text');
 let tNumber = "";
 for(let i=0; i<track.length; i++){
     track[i].addEventListener('click', function(){
-        for (let j=0; j<getPackages.length; j++){
-            console.log(i);
-            console.log(j);
-            if (i == j){
-                console.log(tNumber = getPackages[j].innerText);
-                tNumber = getPackages[j].innerText;
-                console.log(tNumber);
-            }
-        } 
-        sendRequest(tNumber);
+           let parent = track[i].closest('.card-body');
+           tNumber = parent.getElementsByClassName('card-text')[0].innerText;
+           console.log(tNumber);
+           sendRequest(tNumber);  
     });
-}
-
+} 
 
   
    
