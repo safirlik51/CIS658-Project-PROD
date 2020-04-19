@@ -22,12 +22,6 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth-auth0', '~> 2.2'
-gem 'httparty'
-gem 'nokogiri'
-gem 'byebug'
-gem 'kimurai'
-gem 'rest-client'
-gem 'watir'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'faraday'
 # Use Active Storage variant
