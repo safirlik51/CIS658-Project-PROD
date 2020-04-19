@@ -45,26 +45,47 @@ let sendRequest = function(tNumber) {
             console.log(parsed);
             if (parsed.TrackResponse != null){
                 let status = parsed.TrackResponse.Shipment.Package.Activity[0].Status.Description;
-                updateStatus(status);
+                let city = parsed.TrackResponse.Shipment.Package.Activity[0].ActivityLocation.Address.City;
+                let state = parsed.TrackResponse.Shipment.Package.Activity[0].ActivityLocation.Address.StateProvinceCode;
+                let date = parsed.TrackResponse.Shipment.Package.Activity[0].Date;
+                let newDate = new Date(date * 1000);
+                let utcDate = newDate.toUTCString();
+                let clock = new Date(utcDate.toString());
+                let location = city + "," + state; 
+
+                updateStatus(status,location,clock.toLocaleString());
             }
             else{
-                let error = parsed.Fault.faultcode
-                updateStatus(error);
+                let error = parsed.Fault.faultcode;
+                let location = "Unknown";
+                updateStatus(error,location,clock);
             }
         }
     }
 }
 
-let updateStatus = function(package_status){
+let updateStatus = function(package_status,location,time){
     let icon = document.getElementById('icon');
     let index_status = document.getElementById('package-status');
+    let index_location = document.getElementById('package-location');
+    let index_time = document.getElementById('package-time');
     if (package_status == 'Delivered'){
         icon.style.display = "block";
         icon.src = "https://vistatec.com/wp-content/uploads/2019/08/Excellence-Tick-Icon.jpg";
         index_status.innerText = package_status; 
+        index_location.innerText = location;
+        index_time.innerText = time;
+    }
+    if (package_status == 'In Transit'){
+        icon.style.display = "block";
+        icon.src = "https://openclipart.org/image/400px/svg_to_png/29833/warning.png";
+        index_status.innerText = package_status; 
+        index_location.innerText = location;
+        index_time.innerText = time;
     }
     else {
         index_status.innerText = "No Information Available!";
+        index_location = location;
         icon.style.display = "block";
         icon.src = "https://openclipart.org/image/400px/svg_to_png/29833/warning.png";
     }

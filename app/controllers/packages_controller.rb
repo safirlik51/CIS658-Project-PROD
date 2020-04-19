@@ -71,6 +71,7 @@ class PackagesController < ApplicationController
       conn = Faraday.new(url)
       response = conn.post(url,data,"Content-Type" => "application/json")
       puts "Success!"
+      puts response.to_json
       render json: response
   end
 

@@ -1,7 +1,14 @@
 // Place all the styles related to the Packages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-
+h5{
+    font-style: italic;
+    color: slategrey;
+    text-align: center;
+}
+h6{
+    font-style: italic;
+}
 #package_carrier{
     display: inline-block;
 }
