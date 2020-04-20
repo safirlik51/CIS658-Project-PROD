@@ -58,6 +58,7 @@ let sendRequest = function(tNumber) {
             else{
                 let error = parsed.Fault.faultcode;
                 let location = "Unknown";
+                let clock = "N/A";
                 updateStatus(error,location,clock);
             }
         }
@@ -77,16 +78,17 @@ let updateStatus = function(package_status,location,time){
         index_location.innerText = location;
         index_time.innerText = time;
     }
-    //if (package_status == 'In Transit'){
-    //    icon.style.display = "block";
-    //    icon.src = "https://openclipart.org/image/400px/svg_to_png/29833/warning.png";
-    //    index_status.innerText = package_status; 
-    //    index_location.innerText = location;
-    //    index_time.innerText = time;
-    //}
+    else if (package_status == 'In Transit'){
+        icon.style.display = "block";
+        icon.src = "https://openclipart.org/image/400px/svg_to_png/29833/warning.png";
+        index_status.innerText = package_status; 
+        index_location.innerText = location;
+        index_time.innerText = time;
+    }
     else {
         index_status.innerText = "No Information Available!";
-        index_location = location;
+        index_location.innerText = location;
+        index_time.innerText = "";
         icon.style.display = "block";
         icon.src = "https://openclipart.org/image/400px/svg_to_png/29833/warning.png";
     }
