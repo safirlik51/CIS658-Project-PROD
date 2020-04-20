@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'omniauth-auth0', '~> 2.2'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'faraday'
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
