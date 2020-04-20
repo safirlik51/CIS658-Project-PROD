@@ -69,6 +69,7 @@ let updateStatus = function(package_status,location,time){
     let index_status = document.getElementById('package-status');
     let index_location = document.getElementById('package-location');
     let index_time = document.getElementById('package-time');
+    console.log(package_status);
     if (package_status == 'Delivered'){
         icon.style.display = "block";
         icon.src = "https://vistatec.com/wp-content/uploads/2019/08/Excellence-Tick-Icon.jpg";
@@ -76,13 +77,13 @@ let updateStatus = function(package_status,location,time){
         index_location.innerText = location;
         index_time.innerText = time;
     }
-    if (package_status == 'In Transit'){
-        icon.style.display = "block";
-        icon.src = "https://openclipart.org/image/400px/svg_to_png/29833/warning.png";
-        index_status.innerText = package_status; 
-        index_location.innerText = location;
-        index_time.innerText = time;
-    }
+    //if (package_status == 'In Transit'){
+    //    icon.style.display = "block";
+    //    icon.src = "https://openclipart.org/image/400px/svg_to_png/29833/warning.png";
+    //    index_status.innerText = package_status; 
+    //    index_location.innerText = location;
+    //    index_time.innerText = time;
+    //}
     else {
         index_status.innerText = "No Information Available!";
         index_location = location;
