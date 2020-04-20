@@ -44,53 +44,50 @@ let sendRequest = function(tNumber) {
             let parsed = JSON.parse(data.body);
             console.log(parsed);
             if (parsed.TrackResponse != null){
-                let status = parsed.TrackResponse.Shipment.Package.Activity[0].Status.Description;
-                let city = parsed.TrackResponse.Shipment.Package.Activity[0].ActivityLocation.Address.City;
-                let state = parsed.TrackResponse.Shipment.Package.Activity[0].ActivityLocation.Address.StateProvinceCode;
-                let date = parsed.TrackResponse.Shipment.Package.Activity[0].Date;
-                let newDate = new Date(date * 1000);
-                let utcDate = newDate.toUTCString();
-                let clock = new Date(utcDate.toString());
-                let location = city + "," + state; 
-
-                updateStatus(status,location,clock.toLocaleString());
+                if (parsed.TrackResponse.Shipment.Package.Activity[0]){
+                    let status = parsed.TrackResponse.Shipment.Package.Activity[0].Status.Description;
+                    let city = parsed.TrackResponse.Shipment.Package.Activity[0].ActivityLocation.Address.City;
+                    let state = parsed.TrackResponse.Shipment.Package.Activity[0].ActivityLocation.Address.StateProvinceCode;
+                    let location = city + "," + state; 
+                    updateStatus(status,location);
+                } 
+                else{
+                    let status = parsed.TrackResponse.Shipment.Package.Activity.Status.Description;
+                    let location = "Not Available"; 
+                    updateStatus(status,location);
+                }
             }
-            else{
-                let error = parsed.Fault.faultcode;
+            else {
+                let error = "No Information Available!";
                 let location = "Unknown";
-                let clock = "N/A";
-                updateStatus(error,location,clock);
+                updateStatus(error,location);
             }
         }
     }
 }
 
-let updateStatus = function(package_status,location,time){
+let updateStatus = function(package_status,location){
     let icon = document.getElementById('icon');
     let index_status = document.getElementById('package-status');
     let index_location = document.getElementById('package-location');
-    let index_time = document.getElementById('package-time');
     console.log(package_status);
     if (package_status == 'Delivered'){
         icon.style.display = "block";
         icon.src = "https://vistatec.com/wp-content/uploads/2019/08/Excellence-Tick-Icon.jpg";
         index_status.innerText = package_status; 
         index_location.innerText = location;
-        index_time.innerText = time;
     }
     else if (package_status == 'In Transit'){
         icon.style.display = "block";
         icon.src = "https://openclipart.org/image/400px/svg_to_png/29833/warning.png";
         index_status.innerText = package_status; 
         index_location.innerText = location;
-        index_time.innerText = time;
     }
     else {
-        index_status.innerText = "No Information Available!";
-        index_location.innerText = location;
-        index_time.innerText = "";
         icon.style.display = "block";
         icon.src = "https://openclipart.org/image/400px/svg_to_png/29833/warning.png";
+        index_status.innerText = package_status;
+        index_location.innerText = location;
     }
 }
 let track = document.getElementsByClassName('btn btn-sm btn-outline-dark');
