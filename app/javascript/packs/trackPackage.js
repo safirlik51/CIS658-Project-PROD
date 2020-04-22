@@ -28,7 +28,7 @@ let sendRequest = function(tNumber) {
     console.log(jsonString);
     const xhr = new XMLHttpRequest();
 
-    xhr.open("POST", "https://packertracker.herokuapp.com/rest/Track", true);
+    xhr.open("POST", "http://localhost:3000/rest/Track", true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=utf-8");
     xhr.send(jsonString);
 

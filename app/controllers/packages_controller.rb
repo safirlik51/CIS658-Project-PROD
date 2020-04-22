@@ -30,7 +30,6 @@ class PackagesController < ApplicationController
   # POST /packages.json
   def create
     @package = Package.new(package_params)
-
     respond_to do |format|
       if @package.save
         format.html { redirect_to packages_path, notice: 'Package was successfully created.' }
