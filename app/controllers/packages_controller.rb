@@ -1,6 +1,7 @@
 class PackagesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_package, only: [:show, :edit, :update, :destroy]
+  before_action :set_carrier
   skip_before_action :verify_authenticity_token
 
   # GET /packages
@@ -35,7 +36,7 @@ class PackagesController < ApplicationController
         format.html { redirect_to packages_path, notice: 'Package was successfully created.' }
         format.json { render :show, status: :created, location: @package }
       else
-        format.html { render :new }
+        format.html { redirect_to packages_path }
         format.json { render json: @package.errors, status: :unprocessable_entity }
       end
     end
@@ -67,7 +68,7 @@ class PackagesController < ApplicationController
 
   def post
       data = request.body.read
-      url = "https://onlinetools.ups.com/rest/Track"
+      url = "http://localhost:3000/rest/Track"
       conn = Faraday.new(url)
       response = conn.post(url,data,"Content-Type" => "application/json")
       puts "Success!"
@@ -84,5 +85,9 @@ class PackagesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def package_params
       params.require(:package).permit(:tracking, :carrier, :status)
+    end
+
+    def set_carrier
+      @carriers = Package.carriers
     end
 end

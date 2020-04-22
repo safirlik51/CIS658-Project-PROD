@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(version: 2020_04_20_011346) do
   create_table "packages", force: :cascade do |t|
     t.string "tracking"
     t.string "carrier"
+    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status"
   end
 
   create_table "sessions", force: :cascade do |t|

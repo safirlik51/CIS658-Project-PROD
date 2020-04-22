@@ -1,6 +1,12 @@
 // Place all the styles related to the Packages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+#errorMessage{
+    color: red;
+    font-weight: bolder;
+    font-style: italic;
+    text-decoration: underline;
+}
 h5{
     font-style: italic;
     color: slategrey;

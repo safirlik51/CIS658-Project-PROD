@@ -1,4 +1,5 @@
-<%= form_with(model: @package, local: true) do |form| %>
+<div id='errorMessage'></div></br>
+<%= form_with(model: @package, local: true, id: 'packageForm') do |form| %>
   <% if @package.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@package.errors.count, "error") %> prohibited this package from being saved:</h2>
@@ -23,10 +24,10 @@
 
   <div class="field">
     <%= form.label "Carrier:" %></br>
-    <%= form.select :carrier, [['UPS','UPS']],{},{class: "form-control col-md-1"}%>
+      <%= form.select :carrier, @carriers.keys, selected: @package.carrier, class: 'form-control col-md-1' %>
   </div>
 
   <div class="actions">
-    <%= form.submit 'Add Package', :class => 'btn btn-primary my-2' %>
+    <%= form.submit 'Add Package', data: {disable_with: false}, class: 'btn btn-primary my-2' %>
   </div>
 <% end %>
