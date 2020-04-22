@@ -68,7 +68,7 @@ class PackagesController < ApplicationController
 
   def post
       data = request.body.read
-      url = "http://localhost:3000/rest/Track"
+      url = "https://packertracker.herokuapp.com/rest/Track"
       conn = Faraday.new(url)
       response = conn.post(url,data,"Content-Type" => "application/json")
       puts "Success!"
