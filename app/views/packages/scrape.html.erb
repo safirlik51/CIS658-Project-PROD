@@ -1,9 +1,52 @@
 <div>
 <h1>Documentation</h1>
-<h2>Web Client</h2>
+<h4>Web Client</h4>
 <p>Using the information gathered in the form, the site page displays the tracking number and name associated with the database record. Once track is clicked the tracking number is passwed to the UPS JSON array. The array is then sent using POST to the RAILS web server.</p>
-<h2>RAILS RESTful Web Service</h2>
+<p>
+const toSend = {
+        "UPSSecurity": {
+            "UsernameToken": {
+                "Username": "SpencerFirlik",
+                "Password": "********"
+            },
+            "ServiceAccessToken": {
+                "AccessLicenseNumber": "********"
+            }
+        },
+        "TrackRequest": {
+            "Request": {
+                "RequestOption": "activity",
+                "TransactionReference": {
+                    "CustomerContext": "Your Test Case Summary Description"
+                }
+            },
+            "InquiryNumber": tNumber
+        }
+    };
+</p>
+<p>
+const jsonString = JSON.stringify(toSend);</br>
+    console.log(jsonString);</br>
+    const xhr = new XMLHttpRequest();</br>
+    </br>
+    xhr.open("POST", "https://packertracker.herokuapp.com/rest/Track", true);</br>
+    xhr.setRequestHeader("Content-Type", "application/json;charset=utf-8");</br>
+    xhr.send(jsonString);
+</p>
+<h4>RAILS RESTful Web Service</h4>
 <p>Using FARADAY gem the rails server reaches out to the UPS API using the JSON received by the client browser in the package controller 'track' method</p>
 <p>The RAILS web server then send the request to the UPS API using POST and returns the results to the client</p>
-<%= link_to 'Home', packages_path, class: "btn btn-sm btn-danger btn-outline-dark" %>
+<p>
+def post</br>
+    data = request.body.read</br>
+    puts data</br>
+    url = "https://onlinetools.ups.com/rest/Track"</br>
+    conn = Faraday.new(url)</br>
+    response = conn.post(url,data,"Content-Type" => "application/json")</br>
+    puts "Success!"</br>
+    puts response.to_json</br>
+    render json: response</br>
+end
+</p>
+<%= link_to 'Home', packages_path, class: "btn btn-sm btn-outline-dark" %>
 </div>

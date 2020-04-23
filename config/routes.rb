@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :packages
   root 'home#index'
   post '/rest/Track', to: 'packages#post'
+  get '/scrape' => 'packages#scrape'
   get 'dashboard' => 'packages#index'
   get '/logout' => 'auth0#logout'
   get 'auth/auth0', as: 'authentication'

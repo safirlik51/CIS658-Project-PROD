@@ -76,6 +76,9 @@ class PackagesController < ApplicationController
       render json: response
   end
 
+  def scrape
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_package
