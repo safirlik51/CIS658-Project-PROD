@@ -1,4 +1,9 @@
 <div>
-<p id="notice"><%= notice %></p>
+<h1>Documentation</h1>
+<h2>Web Client</h2>
+<p>Using the information gathered in the form, the site page displays the tracking number and name associated with the database record. Once track is clicked the tracking number is passwed to the UPS JSON array. The array is then sent using POST to the RAILS web server.</p>
+<h2>RAILS RESTful Web Service</h2>
+<p>Using FARADAY gem the rails server reaches out to the UPS API using the JSON received by the client browser in the package controller 'track' method</p>
+<p>The RAILS web server then send the request to the UPS API using POST and returns the results to the client</p>
 <%= link_to 'Home', packages_path, class: "btn btn-sm btn-danger btn-outline-dark" %>
 </div>

@@ -13,34 +13,37 @@
     <h1 id="package-status"></h1>
     <h5 id="package-location"></h5></br>
     <div class="container">
-    <div class="row">
-      <% @packages.each do |package| %>
-        <div class="col-md-4">
-        <div class="card mb-4 shadow-sm">
-          <svg class="bg-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="placeholder: Thumbnail">
-            <title>Package</title>
-            <rect width="100%" height="100%" fill="#55595c"></rect>
-            <image href="https://volumeintegration.com/wp-content/uploads/PackageIcon.png" width="100%" height="225"/>
-          </svg>
-          <div class="card-body">
-            <p class="name">
-              <%= package.status %>
-            </p>
-            <p class="card-text">
-              <%= package.tracking%>
-            </p>
-            <div class="d-flex justify-content-between alight-items-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-dark" id="trackButton">Track</button>
-                <%= link_to 'Delete', package, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger btn-outline-dark"%>
+      <div class="row">
+        <% @packages.each do |package| %>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <svg class="bg-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="placeholder: Thumbnail">
+                <title>Package</title>
+                <rect width="100%" height="100%" fill="#55595c"></rect>
+                <image href="https://volumeintegration.com/wp-content/uploads/PackageIcon.png" width="100%" height="225"/>
+              </svg>
+              <div class="card-body">
+                  <p class="name">
+                    <%= package.status %>
+                  </p>
+                  <p class="card-text">
+                    <%= package.tracking%>
+                  </p>
+                <div class="d-flex justify-content-between alight-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-dark" id="trackButton">Track</button>
+                    <%= link_to 'Delete', package, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger btn-outline-dark"%>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        </div>
-      <% end %>
+        <% end %>
       </div>
     </div>
   </div>
+<footer>
+<%= link_to 'Developers', '/scrape' %>
+</footer>
   <%= javascript_pack_tag 'trackPackage', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'validatePackage', 'data-turbolinks-track': 'reload' %>
