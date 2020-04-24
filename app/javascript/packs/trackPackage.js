@@ -7,10 +7,12 @@ let sendRequest = function(tNumber) {
         "UPSSecurity": {
             "UsernameToken": {
                 "Username": "SpencerFirlik",
-                "Password": "11S.Firlik21"
+                //Removed for Security Purposes
+                "Password": "*******"
             },
             "ServiceAccessToken": {
-                "AccessLicenseNumber": "FD7C9056A2CBDF5D"
+                //Removed for Security Purposes
+                "AccessLicenseNumber": "*******"
             }
         },
         "TrackRequest": {
