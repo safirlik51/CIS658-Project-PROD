@@ -21,7 +21,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'omniauth-auth0', '~> 2.2'
+gem 'omniauth-auth0', '~> 2.4'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'faraday'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
